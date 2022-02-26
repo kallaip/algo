@@ -6,6 +6,6 @@ This repo contains some code I wrote to implement different algorithms, some of 
 ##### Stack
 Simple stack implementation in C++ to be used in other algorithms
 
-#####Reverse-polish
+##### Reverse-polish
 Converts infix formulas to reverse polish notation
  
