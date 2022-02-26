@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1645741112 source:/home/kajla/empir/algo/stack/main.cpp
+	<iostream>
+	"Stack.h"
+
+1645741200 /home/kajla/empir/algo/stack/Stack.h
+	<vector>
+	<stdbool.h>
+
