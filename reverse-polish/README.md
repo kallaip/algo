@@ -10,4 +10,6 @@ $ ./reverse-polish
 To delete binary issue `make clean`
 
 This code uses `Stack.h` from the stack folder.   
+
+![Screen shot](screenshot.png)
  
