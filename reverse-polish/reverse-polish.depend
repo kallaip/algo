@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1645858589 source:/home/kajla/empir/algo/reverse-polish/main.cpp
+1645899974 source:/home/kajla/empir/algo/reverse-polish/main.cpp
 	<iostream>
 	"../stack/Stack.h"
 	"Tokenizer.h"
@@ -8,11 +8,17 @@
 	<vector>
 	<stdbool.h>
 
-1645822047 source:/home/kajla/empir/algo/reverse-polish/Tokenizer.cpp
+1645891922 source:/home/kajla/empir/algo/reverse-polish/Tokenizer.cpp
 	"Tokenizer.h"
 
-1645822020 /home/kajla/empir/algo/reverse-polish/Tokenizer.h
+1645891376 /home/kajla/empir/algo/reverse-polish/Tokenizer.h
 	<string>
 	<iostream>
 	<sstream>
+
+1645858646 source:/home/kajla/empir/algo/reverse-polish/ReversePolish.cpp
+	"ReversePolish.h"
+
+1645858621 /home/kajla/empir/algo/reverse-polish/ReversePolish.h
+	<string>
 

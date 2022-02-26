@@ -6,40 +6,88 @@ using namespace std;
 bool isOperand(string s);
 bool isOperator(string s);
 int pr(string s);
+bool leftRightOperator(string s);
 
 int main()
 {
-    Stack<string> s;
+    const bool trace = false;
 
 
-    string be(" (3 + 2)*8 -9 + cat * snail ");
+    Stack<string> v;
+    string inp("");
 
-    cout << be << endl;
-    Tokenizer t(be);
-
-    string x;
-
-    //beginning of algorithm descibed in the diagram reverse-polish.png
-    x = t.next();
-    while ( x.length() > 0 )
+    while (true)
     {
+        cout << "Type expression ('quit' to quit): ";
+        getline(cin, inp);
+        if( inp.compare("quit")==0 || inp.compare("QUIT")==0 ) break;
 
+        cout << "Input string: " << inp <<  endl;
 
-        if (isOperand(x))
-        {
-        }
+        Tokenizer t(inp);
+        string x;
+        cout << "Translated to reverse polish notation: ";
 
-
+        // ======= beginning of algorithm described in the diagram reverse-polish.png =========
         x = t.next();
-    }
+        while ( x.length() > 0 )
+        {
+            if (isOperand(x))
+            {
+                if (trace) cerr << "Operand: " << x << endl;
+                cout << x << " ";
+            }
+            else if ( x.compare("(")==0 )
+            {
+                if (trace) cerr << "Push: " << x << endl;
+                v.push(x);
+            }
+            else if ( x.compare(")")==0 )
+            {
+                if (trace) cerr << "Closing: " << x  << endl;
+                while ( v.top().compare("(") != 0 )
+                {
+                    cout << v.pop() << " ";
+                } // while
+                v.pop();
+            }
+            else if (isOperator(x))
+            {
 
-    cout << "End!" << endl;
+                if (leftRightOperator(x))
+                {
+                    if (trace) cerr << "Operator left: " << x  << endl;
+                    while( !v.isEmpty() && v.top().compare("(") != 0 && pr(v.top()) >= pr(x) )
+                        cout << v.pop() << " ";
+                    v.push(x);
+                }
+                else
+                { // leftRightOperator(x) = false
+                    if (trace) cerr << "Operator Right: " << x  << endl;
+                    while( !v.isEmpty() && v.top().compare("(") != 0 && pr(v.top()) > pr(x) )
+                        cout << v.pop() << " ";
+                    v.push(x);
+                }
+            } // else if
+
+            x = t.next();
+        } // while ( x.length() > 0 )
+
+        while (!v.isEmpty())
+            cout <<v.pop() << " ";
+        cout << endl << "===============================================================" << endl;
+
+        // ===================== end of algorithm ====================================
+
+    } // while(true)
+
+    cout << endl << "Bye!" << endl;
     return 0;
 }
 
 bool isOperand(string s)
 {
-    return s.length()>0 || ( !isOperator(s) && s.compare("(")!=0 && s.compare(")")!=0 );
+    return s.length()>1 || ( !isOperator(s) && s.compare("(")!=0 && s.compare(")")!=0 );
 }
 
 bool isOperator(string s)
@@ -54,4 +102,10 @@ int pr(string s)
     if (s.compare("*")==0 || s.compare("/")==0 )  result = 2;
     if (s.compare("^")==0) result = 3;
     return result;
+}
+
+bool leftRightOperator(string s)
+{
+    if (s.compare("^")==0) return false;
+    return true;
 }
