@@ -5,8 +5,8 @@
 #include <iostream>
 #include <sstream>
 /**
-* Class Tokenizer : parsesinput string into "tokens" (functional parts), every call of next() method
-* returns the next functionalunit, like parenthesis, operators or operands.
+* Class Tokenizer : parses input string into "tokens" (functional parts), every call of next() method
+* returns the next functional unit, like parenthesis, operators or operands.
 */
 
 class Tokenizer
